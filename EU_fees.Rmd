@@ -1,28 +1,243 @@
 ---
-title: "EU_fees"
-output: pdf_document
+title: The impact of tuition fees increases in England on EU undergraduate student
+  mobility
+output:
+  pdf_document: default
+  html_document:
+    df_print: paged
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+setwd("Z:/EU fees research/R Project")
 ```
 
-## R Markdown
+Dias Lopes, Alice
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+Gonzalez, Jose Luis Mateos 
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+Wakeling, Paul
 
-```{r cars}
-summary(cars)
+## Abstract
+
+*This paper aims to understand the impact of tuition fee increases in England on EU international undergraduate student mobility. First, we compared changes in EU undergraduate enrolments in England, which trebled its tuition fee levels in 2012/13 from £3,375 to £9,000, with those observed in Scotland, which does not charge tuition fees to EU undergraduate students. Second, we look at the changes in enrolment by field of study and type of higher education institution by EU countries. Our analysis shows that, on average, English universities suffered a sudden drop in EU enrolments in 2012/13 but recovered their pre-2012 enrolment levels in subsequent academic years. We observe that those English universities regarded as less prestigious experienced the sharpest decline and took longer to recover their pre-2012 numbers. Still, we found different student mobility patterns when examining differences between EU countries. While there is a significant decrease in the number of students from some Western European countries (mainly German and French students) attending English universities after 2012, the tuition fees increase did not impact the number of students coming from Southern Europe. Moreover, we found country-specific patterns regarding the field of studies: a high number of students pursuing subjects allied to Medicine from Ireland, Creative Arts and Design from Portugal, Social Studies from Italy, and Computer Sciences from Romania. Our preliminary results support research on EU intra-mobility that indicates that mobility can be an alternative route of capital accumulation for students from more marginal countries.*
+
+## Introduction
+## Literature Review
+### The impact of tuition fee changes on student enrolments
+
+In recent decades, there has been a substantial increase in academic attention to higher education funding regimes and their impact on student behaviour. This has coincided with changes in the political economy of higher education finance brought about by austerity drives, the growing costs of expanding higher education systems and the emergence and consolidation of neoliberal economic discourses. The latter seek to model ‘the world in terms of functioning capitalist markets [and] its policy objective is to reform institutions, systems, subjects and behaviour to render them instrumental for capital accumulation’ (Marginson 2013, p. 354) and where higher education is perceived ‘as a private good, which benefits individuals, and which individuals should therefore pay, rather than a public good, which benefits societies and economies’ (Wilkins, Shams and Huisman 2013, p. 125). Inter alia, governments inspired by neoliberal policy frameworks have progressively shifted the cost of higher education from the state to the student (Miller 2010) and have favoured targeted rather than universal subsidies to address inequities in access (Leslie and Brinkman 1987, Shattock 2012). In the following lines, we review the impact that these changes have had on different national contexts and to different pools of students. We will also pay particular attention to existing research that has looked at the impact of tuition fee changes on internationally mobile students.
+
+
+First, it is important to highlight that existing research on student finance shows that there are substantial differences between countries –and within countries– in the tuition fee levels that students need to pay and, equally important, the subsidies –or loans– students may have access to while in higher education. In this sense, countries’ tuition-subsidy arrangements ‘have been found to be of enormous importance because of their far-reaching social, economic and political consequences: the tuition-subsidy system affects students’ enrolment behaviour, and thereby shape, among other things, patterns of social mobility and socio-economic as well as educational inequality’ (Garritzmann 2016, p. 301-302). These cross-country differences in tuition-subsidy regimes might be the reason why evidence about the effect of tuition fee changes and increases on shaping students’ decision-making processes is mixed, particularly because some of the potential negative effects of tuition fee changes on participation cannot be disentangled from the ameliorating effects of support packages, including student loans.
+In the United States, Leslie and Brinkman (1987) found, after reviewing 25 studies on the effects of tuition fees and financial aid on student enrolment, that an increase of $100 in tuition fees ‘one would expect an 18-24-year-old participation rate drop of about three-quarters of a percentage point’ (p. 188-189, emphasis in the original). In their discussion, they also suggest that increases in tuition fee prices appear to have a greater effect that other price changes, such as accommodation or travel, and they offer an explanation as to why this may be the case:</div>
+
+‘Several explanations have been offered as to why tuition response might be relatively large. Tuition is the most visible college price, and it is the one that is most inescapable. College tuitions are conspicuous, and students are unusually conscious of them. Annual increases generally are well publicized and often are debated publicly’(p. 196).
+
+Ten years later, Heller (1997) updated Leslie and Brinkman’s (1987) study. Again, they analysed a corpus of research investigating the relationship between financial availability and access to higher education, in this case with up-to-date data and putting special emphasis on price and financial aid sensitivity among students from different incomes, ethnicities and institutional types. They found that, indeed, there is ‘a downward-sloping demand curve for higher education’ (Heller 1997, p. 650). In particular, they showed that increases in tuition levels and declines in financial aid –particularly grants– yield lower enrolment. Moreover, they found that students from low income households, black students, and those studying in community colleges are more sensitive to tuition changes. Similarly, Hübner (2012) found that this relationship exists among German prospective undergraduate students. Using a natural experimental design, they compared enrolment changes between German states that introduced tuition fees in 2007 and those that did not, concluding that ‘the introduction of tuition fees at an annual rate of €1,000 reduced enrolment probabilities amongst high-school graduates from states which introduced fees by 2.7 percentage points’ (p.959).
+
+
+In the case of Australia, Foskett, Roberts and Maringe (2006) found a radically different picture, probably due to the nature of the changes in student finance put in place in these two countries. They analysed the impact of the Higher Education Contribution Scheme (HECS), introduced in 1989. HECS is a fee charged to all undergraduate students the payment of which can be deferred until graduates reached a certain level of income, ‘this was the world’s first income-contingent charge for higher education’ (p. 31). According to the authors, evidence from Australia does not suggest that ‘increasing fees reduces participation in HE’ (p. 110). However, there is one important issue to consider from the Australian case. The conditions under which Australian undergraduate students borrow resources to pay for their higher education are more attractive than in other high-fee regimes, and borrowing levels appear to be significantly lower than, for instance, the United States. In the latter, ‘even six-digit debts are not uncommon’ (Garritzmann 2016, p. 160). This suggests that, under certain circumstances such as when government-backed income-contingent loans are available, access to credit rather than debt aversion may be key to understand participation (Wakeling et al., 2017; Mateos-González and Wakeling, in press).
+
+
+In the case of England, this paper’s country of interest, research on the potential impact of tuition fee changes on enrolment mushroomed since the introduction of variable fees of up to £3,000 in 2006 (Foskett, Roberts and Maringe, 2006) and got momentum when it was announced, in 2010, that the cap on tuition fees would be raised to £9,000 starting in 2012 –the piece of policy being investigated in this article. This decision was indeed controversial, triggering student protests across the country (Davis, Cecil, Murphy and Davenport 2010). One of the first pieces of research looking at the impact of this policy was produced by Wilkins, Shams and Huisman (2013), who surveyed 1549 high school students about to make the decision to apply to university when the £9,000-fee policy was introduced. The researchers concluded that financial issues were ‘the most important factor’ for students’ study choices, ‘with a quarter of respondents considering postponing university studies and almost one-fifth considering cheaper higher education options’ (p. 136). Wilkins, Shams and Huisman (2013) conclusion is backed up by later research. Geven (2015), using a quasi-experiment design comparing enrolment rates between students who did not have to pay fees in 2012 in the UK –e.g. Scottish students– and those who did, found that ‘enrolment declined by 15\% in treated groups as a result of the tuition fee increase’ (p. 479). According to Geven (2015), this effect was particularly important among older students and, interestingly, for those from ‘the middle and service class’ (p. 495). Similarly. Sá (2014) found that the £9,000-fee policy has a smaller effect on ‘non-white students and for students from local authorities with low rates of participation in higher education’ (p. 2), and she offers a potential explanation for why this might be the case: that fees are subsidies via government-backed income-contingent loans and that, under the current arrangements, ‘universities that charge higher fees need to have access agreements […] to attract and support students from disadvantaged backgrounds’ (ibid.).
+
+
+## Data
+We use the Higher Education Statistics Agency (HESA) data for first-year EU undergraduate students that attended a UK higher education institution between the academic years 2007/08 and 2018/19. The tables and graphs present in this paper follow the HESA standard rounding methodology  which prevents identifying individuals in the data.
+In this paper, we seek to capture the effect of changes in the cost of higher education in England on EU student enrolments in English higher education institutions. By using a quasi-experimental method, we take advantage of the variation in tuition fee regimes in UK home nations and compare changes in enrolment rates in England, where there was a threefold increase in undergraduate tuition fees in 2012, to those in Scotland, which has not charged tuition fees to EU undergraduate students throughout the period under study.
+
+## Results
+### Differences in enrollment in England and Scotland
+
+In this section, we first explore the evolution of first-year EU first-degree (“EU students”, henceforth) student numbers at English and Scottish institutions, paying particular attention to how these numbers have changed in relation to the introduction of £9,000 tuition fees. Moreover, we do so comparing recruitment changes across different types of institutions –i.e. those given the university title before and after the 1992 Further and Higher Education Ac. Second, we report the results of our ‘differences-in-differences’ estimates.
+
+First, figure 1 plots the evolution of all incoming EU students at English and Scottish institutions. The dashed line marks the year the £9,000-fee policy was introduced in England. In addition, table 1 displays the raw numbers of EU students and the mean number of EU students per institution at both home nations.
+
+```{r pressure1, echo=FALSE}
+eu_data <- read_csv("Data/eu_data_final.csv")
+eu_data$eu_country <- as.factor(eu_data$eu_country)
+eu_data$uk_country <- as.factor(eu_data$uk_country)
+
+# creating a new dataset with total enrollment in England and Scotland by year
+uk_country <- eu_data %>% 
+  filter(eu_country != "Gibraltar") %>% 
+  group_by(uk_country, year) %>% 
+  summarise(uk_total = sum(fpe, na.rm = T))
+
+# applying the HESA rounding methodology
+uk_country$uk_total_round <- round(uk_country$uk_total/5)*5
+
+# new variable for the difference in enrollment by year
+uk_country <- uk_country %>% 
+  group_by(uk_country) %>% 
+  arrange (year) %>%
+  mutate (diff = uk_total - lag (uk_total, default = first (uk_total)),
+          diff_round = uk_total_round - lag (uk_total_round, default = first(uk_total_round))) 
+
+# plotting total enrollment for England and Scotland
+ggplot(uk_country, aes(x=year, y=(uk_total_round/1000), colour=uk_country)) +
+  geom_line() + 
+  geom_point(size=1) +
+  geom_vline(aes(xintercept=2012), colour = "#BB0000", linetype="dashed") +
+  theme_bw () +
+  ylab ("Total Enrollment (in thousands)") + xlab ("Year") +
+  scale_x_continuous(breaks=seq(2007, 2020, 1)) +
+  scale_colour_brewer(palette = "Set1") + 
+  theme(legend.title=element_blank())
 ```
 
-## Including Plots
+### Differences in enrollment by EU country
+```{r pressure2, echo=FALSE, fig.width=10,fig.height=10}
+eu_pct <- read.csv("Data/eu_pct_year.csv")
 
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
+ggplot(eu_pct, aes(x=year, y=total_round)) +
+  facet_wrap(vars(eu_country), ncol = 4, scales = "free_y") +
+  geom_line() + 
+  geom_point(size=1) +
+  geom_vline(aes(xintercept=2012), colour = "#BB0000", linetype="dashed") +
+  theme_bw () +
+  ylab ("Total enrollment") + xlab ("Year") +
+  theme(strip.text.x = element_text(size=8),
+        strip.background = element_rect(colour="black", fill="#f0f0f0")) +
+  scale_colour_brewer(palette = "Set1") + 
+  scale_x_continuous(breaks=seq(2007, 2020, 2))  +
+  theme(axis.text.x  = element_text(angle=90, vjust=0.5)) + 
+  theme(legend.title=element_blank())
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+```{r pressure3, echo=FALSE}
+# Multiple plot function
+#
+# ggplot objects can be passed in ..., or to plotlist (as a list of ggplot objects)
+# - cols:   Number of columns in layout
+# - layout: A matrix specifying the layout. If present, 'cols' is ignored.
+#
+# If the layout is something like matrix(c(1,2,3,3), nrow=2, byrow=TRUE),
+# then plot 1 will go in the upper left, 2 will go in the upper right, and
+# 3 will go all the way across the bottom.
+#
+multiplot <- function(..., plotlist=NULL, file, cols=1, layout=NULL) {
+  library(grid)
+
+  # Make a list from the ... arguments and plotlist
+  plots <- c(list(...), plotlist)
+
+  numPlots = length(plots)
+
+  # If layout is NULL, then use 'cols' to determine layout
+  if (is.null(layout)) {
+    # Make the panel
+    # ncol: Number of columns of plots
+    # nrow: Number of rows needed, calculated from # of cols
+    layout <- matrix(seq(1, cols * ceiling(numPlots/cols)),
+                    ncol = cols, nrow = ceiling(numPlots/cols))
+  }
+
+ if (numPlots==1) {
+    print(plots[[1]])
+
+  } else {
+    # Set up the page
+    grid.newpage()
+    pushViewport(viewport(layout = grid.layout(nrow(layout), ncol(layout))))
+
+    # Make each plot, in the correct location
+    for (i in 1:numPlots) {
+      # Get the i,j matrix positions of the regions that contain this subplot
+      matchidx <- as.data.frame(which(layout == i, arr.ind = TRUE))
+
+      print(plots[[i]], vp = viewport(layout.pos.row = matchidx$row,
+                                      layout.pos.col = matchidx$col))
+    }
+  }
+}
+```
+
+```{r pressure4, echo=FALSE, fig.width=10,fig.height=11}
+# dataset with information on the EU country and with mean percentage change from 2011
+eu_model <- read_csv("Data/eu_model.csv")
+
+eu_model <- eu_model %>% 
+  filter(eu_countries != "Croatia")
+
+# gini
+eu_model$gini2 <- eu_model$gini^2
+
+gini <- ggplot(eu_model, aes(x=gini, y=eu_pct_mean, label = eu_acr)) +
+  geom_point(aes(size = eu_enrol_total, colour = tuition_fees)) +    
+  stat_smooth(method = "lm", formula = y ~ x + I(x^2), size = 1, se = FALSE) +
+  geom_text(hjust= 1.3, vjust= 1.3, size = 3) +
+  xlab("GINI (2011)") +
+  ylab("Mean percentage change in enrollment after tuition fees") +
+  labs(size = "Total number of students (2012 to 2020)", 
+       colour = "Tuition fees in Country of Origin",
+       caption = "ŷ = -3,401.9 - 227.5 x + 3.9 x2, R-squared = 0.35") +
+  theme_bw()
+
+# gdp
+gdp <- ggplot(eu_model, aes(x=gdp, y=eu_pct_mean, label = eu_acr)) +
+  geom_point(aes(size = eu_enrol_total, colour = tuition_fees)) +    
+  stat_smooth(method="lm", formula = y ~ x, size = 1, se = FALSE) + 
+  geom_text(hjust= 1.3, vjust= 1.3, size = 3) +
+  xlab("GDP (2011)") +
+  ylab("Mean percentage change in enrollment after tuition fees") +
+  labs(size = "Total number of students (2012 to 2020)", 
+       colour = "Tuition fees in Country of Origin",
+       caption = "ŷ = 37.4 - 4.6 x, R-squared = 0.03") +
+  theme_bw()
+multiplot (gdp, gini)
+```
+
+```{r pressure5, echo=FALSE, fig.width=20,fig.height=11}
+# disatisfaction
+disatisfaction <- ggplot(eu_model, aes(x=satisfaction, y=eu_pct_mean, label = eu_acr)) +
+  geom_point(aes(size = eu_enrol_total, colour = tuition_fees)) +    
+  stat_smooth(method="lm", formula = y ~ x, size = 1, se = FALSE) + 
+  geom_text(hjust= 1.3, vjust= 1.3, size = 3) +
+  xlab("On the whole, are you not at all satisfied with the life you lead? (%) \n (Survey: Europeans in 2014)") +
+  ylab("Mean percentage change in enrollment after tuition fees") +
+  labs(size = "Total number of students (2012 to 2020)", 
+       colour = "Tuition fees in Country of Origin",
+       caption = "ŷ = -33.23 + 243.8 x, R-squared = 0.39") +
+  theme_bw()
+
+# youth marginalised by crisis
+marginalised <- ggplot(eu_model, aes(x=marginalised_crisis, y=eu_pct_mean, label = eu_acr)) +
+  geom_point(aes(size = eu_enrol_total, colour = tuition_fees)) +    
+  stat_smooth(method="lm", formula = y ~ x, size = 1, se = FALSE) + 
+  geom_text(hjust= 1.3, vjust= 1.3, size = 3) +
+  xlab("Do you feel that in our country young people have been marginalised by the economic crisis? (%) \n (Survey: European youth in 2016)") +
+  ylab("Mean percentage change in enrollment after tuition fees") +
+  labs(size ="Total number of students (2012 to 2020)", 
+       colour="Tuition fees in Country of Origin",
+       caption = "ŷ = -68.4 + 165.5 x, R-squared = 0.16") +
+  theme_bw()
+
+# youth mobility by crisis
+mobility <- ggplot(eu_model, aes(x=crisis_mobility, y=eu_pct_mean, label = eu_acr)) +
+  geom_point(aes(size = eu_enrol_total, colour = tuition_fees)) +    
+  stat_smooth(method="lm", formula = y ~ x, size = 1, se = FALSE) + 
+  geom_text(hjust= 1.3, vjust= 1.3, size = 3) +
+  xlab("Because of the crisis, you feel compelled to study, undergo training or work in another EU country? (%) \n (Survey: European youth in 2016)") +
+  ylab("Mean percentage change in enrollment after tuition fees") +
+  labs(size ="Total number of students (2012 to 2020)", 
+       colour="Tuition fees in Country of Origin",
+       caption = "ŷ = -10.7 + 208.7 x, R-squared = 0.15") +
+  theme_bw()
+
+# perception of HE
+he_perception <- ggplot(eu_model, aes(x=country_he, y=eu_pct_mean, label = eu_acr)) +
+  geom_point(aes(size = eu_enrol_total, colour = tuition_fees)) +    
+  stat_smooth(method="lm", formula = y ~ x, size = 1, se = FALSE) + 
+  geom_text(hjust= 1.3, vjust= 1.3, size = 3) +
+  xlab("Do you think that in your country, training, school and university education are well adapted or not to current world of work? (%) \n (Survey: European youth in 2016)") +
+  ylab("Mean percentage change in enrollment after tuition fees") +
+  labs(size ="Total number of students (2012 to 2020)", 
+       colour="Tuition fees in Country of Origin",
+       caption = "ŷ = 96.8 -114.5 x, R-squared = 0.07") +
+  theme_bw()
+multiplot(disatisfaction, marginalised, mobility, he_perception, cols = 2)
+```
